@@ -8,22 +8,31 @@ console.log("3 - DEPOSITO");
 
 
 let contaCorrente = 1000;
+let novoSaldo;
 
-acaoCliente = leia.questionInt('Digite o que ira fazer');
-switch(acaoCliente){
+
+acaoCliente = leia.questionInt('Digite o que ira fazer  : \n');
+
+switch (acaoCliente) {
     case 1:
-        console.log('\n Bom dia sr. O seu saldo eh:  ', contaCorrente)
+        console.log('O seu saldo na Conta Correto é',
+            new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(contaCorrente))
         break;
     case 2:
-        valorDeSaque = leia.questionInt('\n Digite valor de Saque')
-        if (valorDeSaque > contaCorrente)
+        valorDeSaque = leia.questionInt(' Digite valor de Saque: \n')
+        if (valorDeSaque > contaCorrente){
             console.log('Saldo Insuficiente')
-        else
-            console.log('\n Seu novo saldo eh', contaCorrente - valorDeSaque)
-        break;
+        }else if(valorDeSaque < 0){
+            console.log('Valor Invalido, precisa ser positivo')
+        }else{
+            novoSaldo = contaCorrente - valorDeSaque
+            console.log('O seu novo saldo na Conta Corrente é',
+            new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(novoSaldo))   
+            }break;
     case 3:
-        depositoCliente = leia.questionInt('\n Digite o valor a depositar:  ')
+        depositoCliente = leia.questionInt('\n Digite o valor a depositar:  \n')
         contaCorrente = depositoCliente + contaCorrente
-        console.log('Seu novo saldo eh: ', contaCorrente)
+        console.log('O seu novo saldo na Conta Correto é',
+            new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(contaCorrente)) 
         break;
 }

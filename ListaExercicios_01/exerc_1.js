@@ -1,9 +1,9 @@
 const leia = require('readline-sync');
 
-let salario = leia.questionInt('Digite o salario: ');
+let salario = leia.questionInt('Digite o salario: ',{limitMessage: 'entrada incorreta'});
 console.log('O salario digitado foi:  ', salario)
 
-let abono = leia.questionInt('Digite o abono: ');
+let abono = leia.questionInt('Digite o abono: ',{limitMessage: 'entrada incorreta'});
 console.log('O abono digitado foi: ', abono)
 
 

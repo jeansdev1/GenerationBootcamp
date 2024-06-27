@@ -21,3 +21,7 @@ console.log('Os descontos digitados foi: ', descontos)
 
 salarioLiquido = salarioBruto + adicionalNoturno + (horasExtras * 5)- descontos;
 console.log('O salario liquido eh: ','R$', salarioLiquido);
+
+
+
+

@@ -15,7 +15,7 @@ acaoCliente = leia.questionInt('Digite o que ira fazer  : \n');
 
 switch (acaoCliente) {
     case 1:
-        console.log('O seu saldo na Conta Correto é',
+        console.log('O seu saldo na Conta Corrente é',
             new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(contaCorrente))
         break;
     case 2:

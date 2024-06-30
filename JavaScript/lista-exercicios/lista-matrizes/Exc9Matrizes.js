@@ -1,39 +1,38 @@
-const leia = require('readline-sync')
+const leia = require('readline-sync');
 
-let matrizInteiros = new Array(3)
+let matrizInteiros = new Array(3);
 
-elementosPrincial = Array(3)
-elementosSecundario = Array(3)
-soma = 0
-
-for (i = 0; i < matrizInteiros.length; i++) {
+for (let i = 0; i < matrizInteiros.length; i++) {
     matrizInteiros[i] = new Array(3);
 }
+
 for (let i = 0; i < matrizInteiros.length; i++) {
-    for (let indiceColuna = 0; indiceColuna < matrizInteiros.length; indiceColuna++) {
-        matrizInteiros[i][indiceColuna] = leia.questionInt(
-            `Digite um numero do elemento [${i}][${indiceColuna}]: `
-        );
+    for (let indiceColuna = 0; indiceColuna < matrizInteiros[i].length; indiceColuna++) {
+        matrizInteiros[i][indiceColuna] = leia.questionInt(`Digite um numero do elemento [${i}][${indiceColuna}]: `);
     }
 }
 
-console.log("\nDados - Matriz de Inteiros\n")
+console.log("\nDados - Matriz de Inteiros\n");
+console.table(matrizInteiros);
 
-console.table(matrizInteiros)
+let somaPrincipal = 0;
+let somaSecundaria = 0;
+let elementosPrincial = [];
+let elementosSecundario = [];
 
-for (let indiceLinha = 0; indiceLinha < matrizInteiros.length; indiceLinha++) {
-
-    for (let indiceColuna = 0; indiceColuna < matrizInteiros.length; indiceColuna++) {
-        if (indiceLinha === indiceColuna) {
-            soma += matrizInteiros[indiceColuna][indiceLinha];
-            elementosPrincial[indiceLinha] = soma;
-        } else if ((indiceLinha + indiceColuna) == matrizInteiros - 1){
-            soma += matrizInteiros[indiceColuna][indiceLinha];
-            elementosSecundario[indiceLinha] = soma;
-        }
-        soma = 0;
-
-    }
+for (let i = 0; i < matrizInteiros.length; i++) {
+    somaPrincipal += matrizInteiros[i][i];
+    elementosPrincial[i] = matrizInteiros[i][i];
+    
+    somaSecundaria += matrizInteiros[i][matrizInteiros.length - 1 - i];
+    elementosSecundario[i] = matrizInteiros[i][matrizInteiros.length - 1 - i];
 }
-console.table(elementosPrincial)
-console.table(elementosSecundario)
+
+console.log("Elementos da Diagonal Principal:");
+console.table(elementosPrincial);
+
+console.log("Elementos da Diagonal Secundária:");
+console.table(elementosSecundario);
+
+console.log(`Soma da Diagonal Principal: ${somaPrincipal}`);
+console.log(`Soma da Diagonal Secundária: ${somaSecundaria}`);
